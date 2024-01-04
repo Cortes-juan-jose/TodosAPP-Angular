@@ -1,5 +1,14 @@
 import { createAction, props } from "@ngrx/store";
 
-export const addTarea = createAction('[TODO] Crear Tarea', props<{
+export const crearTarea = createAction('[TODO] Crear Tarea', props<{
     texto: string
-}>())
+}>());
+
+export const marcarDesmarcarTarea= createAction('[TODO] Marcar/Desmarcar Tarea', props<{
+    id: number,
+}>());
+
+export const editarTarea = createAction('[TODO] Editar Tarea', props<{
+    id: number,
+    texto: string,
+}>());

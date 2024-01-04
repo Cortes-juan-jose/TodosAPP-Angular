@@ -1,9 +1,44 @@
-import { createReducer, on } from "@ngrx/store";
-import { addTarea } from "./todo.actions";
-import { Todo } from "./models/todo.model";
+import { createReducer, on } from '@ngrx/store';
 
-export const stateInitial: Todo[] = [new Todo('Tengo que ir a comprar')];
+import * as actions from './todo.actions';
+import { Todo } from './models/todo.model';
 
-export const todosReducer = createReducer(stateInitial,
-    on(addTarea, (state, {texto}) => [...state, new Todo(texto)])
-)
+export const stateInitial: Todo[] = [
+  new Todo('Tengo que ir a comprar'),
+  new Todo('Lavar los platos'),
+  new Todo('Fregar el suelo de la cocina'),
+  new Todo('Recoger la mesa'),
+];
+
+export const todosReducer = createReducer(
+  stateInitial,
+
+  on(actions.crearTarea, (state, { texto }) => [new Todo(texto), ...state]),
+
+  on(actions.marcarDesmarcarTarea, (state, { id }) => {
+    return state.map((tarea: Todo) => {
+      if (tarea.id === id) {
+        return {
+          ...tarea,
+          completado: !tarea.completado,
+        };
+      } else {
+        return { ...tarea };
+      }
+    });
+  }),
+
+  on(actions.editarTarea, (state, { id, texto }) => {
+    return state.map((tarea: Todo) => {
+      if (tarea.id === id) {
+
+        return {
+          ...tarea,
+          texto: texto,
+        };
+      } else {
+        return { ...tarea };
+      }
+    });
+  })
+);

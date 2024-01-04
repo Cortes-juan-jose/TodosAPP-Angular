@@ -5,16 +5,16 @@ import { TodoPageComponent } from './todos/components/todo-page/todo-page.compon
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'todos',
+    redirectTo: 'tareas',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'todos',
+    redirectTo: 'tareas',
     pathMatch: 'full'
   },
   {
-    path: 'todos',
+    path: 'tareas',
     component: TodoPageComponent,
   }
 ];
