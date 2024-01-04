@@ -47,37 +47,12 @@ export const todosReducer = createReducer(
     });
   }),
 
-  on (actions.marcarDesmarcarTodasTareas, (state, {completado}) => {
-    return state.map(tarea => {
+  on(actions.marcarDesmarcarTodasTareas, (state, { completado }) => {
+    return state.map((tarea) => {
       return {
         ...tarea,
-        completado
-      }
-    })
+        completado,
+      };
+    });
   })
-
-  // on(actions.marcarDesmarcarTodasTareas, (state) => {
-
-  //   let aCompletar: boolean = false;
-
-  //   state.forEach(tarea => {
-  //     if (!tarea.completado) aCompletar = true;
-  //   })
-
-  //   if (aCompletar) {
-  //     return state.map((tarea) => {
-  //       return {
-  //         ...tarea,
-  //         completado: true,
-  //       };
-  //     });
-  //   } else {
-  //     return state.map((tarea) => {
-  //       return {
-  //         ...tarea,
-  //         completado: false,
-  //       };
-  //     });
-  //   }
-  // })
 );
