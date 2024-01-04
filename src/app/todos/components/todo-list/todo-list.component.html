@@ -1,6 +1,6 @@
 <section class="main">
-  <input id="toggle-all" class="toggle-all" type="checkbox" />
-  <label for="toggle-all">Mark all as complete</label>
+  <input (click)="completarTodasTareas()" id="toggle-all" class="toggle-all" type="checkbox" />
+  <label for="toggle-all">Marcar todas completadas</label>
 
   <!-- LISTA TAREAS -->
   <ul class="todo-list">

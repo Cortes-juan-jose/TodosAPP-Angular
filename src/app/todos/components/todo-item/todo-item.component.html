@@ -4,5 +4,5 @@
     <label (dblclick)="editar()">{{tarea.texto}}</label>
     <button (click)="eliminarTarea()" class="destroy"></button>
   </div>
-  <input #inputFisico class="edit" type="text" [formControl]="txtInput" (blur)="modificarTarea()"/>
+  <input #inputFisico class="edit" type="text" [formControl]="txtInput" (blur)="modificarTarea()" (keyup.enter)="modificarTarea()"/>
 </li>

@@ -31,7 +31,6 @@ export const todosReducer = createReducer(
   on(actions.editarTarea, (state, { id, texto }) => {
     return state.map((tarea: Todo) => {
       if (tarea.id === id) {
-
         return {
           ...tarea,
           texto: texto,
@@ -43,8 +42,42 @@ export const todosReducer = createReducer(
   }),
 
   on(actions.eliminarTarea, (state, { id }) => {
-    return state.filter(tarea => {
-        return tarea.id !== id;
-    })
+    return state.filter((tarea) => {
+      return tarea.id !== id;
+    });
   }),
+
+  on (actions.marcarDesmarcarTodasTareas, (state, {completado}) => {
+    return state.map(tarea => {
+      return {
+        ...tarea,
+        completado
+      }
+    })
+  })
+
+  // on(actions.marcarDesmarcarTodasTareas, (state) => {
+
+  //   let aCompletar: boolean = false;
+
+  //   state.forEach(tarea => {
+  //     if (!tarea.completado) aCompletar = true;
+  //   })
+
+  //   if (aCompletar) {
+  //     return state.map((tarea) => {
+  //       return {
+  //         ...tarea,
+  //         completado: true,
+  //       };
+  //     });
+  //   } else {
+  //     return state.map((tarea) => {
+  //       return {
+  //         ...tarea,
+  //         completado: false,
+  //       };
+  //     });
+  //   }
+  // })
 );

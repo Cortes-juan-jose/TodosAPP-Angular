@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../models/todo.model';
 import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
+import { marcarDesmarcarTodasTareas } from '../../todo.actions';
 
 @Component({
   selector: 'todo-list',
@@ -11,6 +12,7 @@ import { Store } from '@ngrx/store';
 export class TodoListComponent implements OnInit{
 
   listaTareas!: Todo[];
+  completadas!: boolean;
 
   constructor(private store: Store<AppState>){}
 
@@ -19,7 +21,14 @@ export class TodoListComponent implements OnInit{
       next: todos => this.listaTareas = todos,
       error: err => console.log(err),
       complete: () => console.log('Completado'),
-    })
-  } 
+    });
+
+    this.completadas = false;
+  }
+
+  completarTodasTareas () {
+    this.completadas = !this.completadas;
+    this.store.dispatch ( marcarDesmarcarTodasTareas({completado: this.completadas}) );
+  }
 
 }
