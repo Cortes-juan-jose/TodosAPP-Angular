@@ -2,7 +2,7 @@
   <div class="view">
     <input class="toggle" type="checkbox" [formControl]="checkTarea" />
     <label (dblclick)="editar()">{{tarea.texto}}</label>
-    <button class="destroy"></button>
+    <button (click)="eliminarTarea()" class="destroy"></button>
   </div>
   <input #inputFisico class="edit" type="text" [formControl]="txtInput" (blur)="modificarTarea()"/>
 </li>

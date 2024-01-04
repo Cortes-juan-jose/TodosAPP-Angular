@@ -55,4 +55,10 @@ export class TodoItemComponent implements OnInit {
       actions.editarTarea({ id: this.tarea.id, texto: this.txtInput.value })
     );
   }
+
+  eliminarTarea() {
+    this.store.dispatch(
+      actions.eliminarTarea({ id: this.tarea.id })
+    );
+  }
 }

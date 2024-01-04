@@ -40,5 +40,11 @@ export const todosReducer = createReducer(
         return { ...tarea };
       }
     });
-  })
+  }),
+
+  on(actions.eliminarTarea, (state, { id }) => {
+    return state.filter(tarea => {
+        return tarea.id !== id;
+    })
+  }),
 );
