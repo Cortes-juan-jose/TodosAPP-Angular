@@ -10,7 +10,7 @@ export const stateInitial: Todo[] = [
   new Todo('Recoger la mesa'),
 ];
 
-export const todosReducer = createReducer(
+export const tareasReducer = createReducer(
   stateInitial,
 
   on(actions.crearTarea, (state, { texto }) => [new Todo(texto), ...state]),

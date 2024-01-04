@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // NGrX
 import { StoreModule } from '@ngrx/store';
-import { todosReducer } from './todos/todo.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { appReducers } from './app.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment.development';
     AppRoutingModule,
     TodoModule,
     SharedModule,
-    StoreModule.forRoot({todos: todosReducer}),
+    StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

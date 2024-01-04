@@ -17,7 +17,7 @@ export class TodoListComponent implements OnInit{
   constructor(private store: Store<AppState>){}
 
   ngOnInit () : void {
-    this.store.select('todos').subscribe({
+    this.store.select('tareas').subscribe({
       next: todos => this.listaTareas = todos,
       error: err => console.log(err),
       complete: () => console.log('Completado'),
