@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import * as actions from './filtro.actions';
 import { filtrosValidos } from './filtro.constantes';
 
-export const filtroInicial: string = 'pendientes';
+export const filtroInicial: string = 'todas';
 
 export const filtroReducer = createReducer(
   filtroInicial,
