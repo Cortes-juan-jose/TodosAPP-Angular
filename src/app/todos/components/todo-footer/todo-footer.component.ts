@@ -12,7 +12,8 @@ export class TodoFooterComponent implements OnInit{
 
   filtroActivado!: string;
   filtros!: actions.filtrosValidos[];
-  tareasPendientes!: number;
+
+  tareasPendientes: number = 0;
 
   constructor(private store: Store<AppState>) {}
 
@@ -20,8 +21,11 @@ export class TodoFooterComponent implements OnInit{
 
     this.filtros = ['todas', 'pendientes', 'completadas'];
 
-    this.store.select('filtro').subscribe({
-      next: filtro => this.filtroActivado = filtro,
+    this.store.subscribe({
+      next: state => {
+        this.filtroActivado = state.filtro;
+        this.tareasPendientes = state.tareas.filter(tarea => tarea.completado!==true).length;
+      },
       error: err => console.log(err),
       complete: () => console.log('Completado'),
     })

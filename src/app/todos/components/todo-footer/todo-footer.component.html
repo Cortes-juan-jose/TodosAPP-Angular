@@ -1,5 +1,5 @@
 <footer class="footer">
-  <span class="todo-count"><strong>{{tareasPendientes}}</strong> Tareas pendientes</span>
+  <span class="todo-count"><strong>{{tareasPendientes}}</strong> Pendientes</span>
   <ul class="filters">
     <li *ngFor="let filtro of filtros">
       <a [ngClass]="{selected: filtroActivado===filtro}" (click)="establecerFiltro(filtro)">{{filtro | titlecase}}</a>
