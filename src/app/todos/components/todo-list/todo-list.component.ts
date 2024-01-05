@@ -3,6 +3,7 @@ import { Todo } from '../../models/todo.model';
 import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 import { marcarDesmarcarTodasTareas } from '../../todo.actions';
+import { filtrosValidos } from 'src/app/filtro/filtro.actions';
 
 @Component({
   selector: 'todo-list',
@@ -14,11 +15,16 @@ export class TodoListComponent implements OnInit{
   listaTareas!: Todo[];
   completadas!: boolean;
 
+  filtro!: filtrosValidos;
+
   constructor(private store: Store<AppState>){}
 
   ngOnInit () : void {
-    this.store.select('tareas').subscribe({
-      next: todos => this.listaTareas = todos,
+    this.store.subscribe({
+      next: state => {
+        this.listaTareas = state.tareas;
+        this.filtro = state.filtro as filtrosValidos;
+      },
       error: err => console.log(err),
       complete: () => console.log('Completado'),
     });

@@ -6,6 +6,7 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoPageComponent } from './components/todo-page/todo-page.component';
 import { SharedModule } from '../shared/shared.module';
+import { FiltroPipe } from './pipes/filtro.pipe';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     TodoItemComponent,
     TodoListComponent,
     TodoPageComponent,
+    FiltroPipe,
   ],
   imports: [
     CommonModule,

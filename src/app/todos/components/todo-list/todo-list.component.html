@@ -4,6 +4,6 @@
 
   <!-- LISTA TAREAS -->
   <ul class="todo-list">
-    <todo-item *ngFor="let tarea of listaTareas;" [tarea]="tarea"></todo-item>
+    <todo-item *ngFor="let tarea of listaTareas | filtroTarea:filtro" [tarea]="tarea"></todo-item>
   </ul>
 </section>
