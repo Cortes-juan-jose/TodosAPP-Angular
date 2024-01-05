@@ -3,13 +3,13 @@
   <ul class="filters">
     <li>
       <!-- class="selected" -->
-      <a (click)="establecerFiltro('todas')">Todas</a>
+      <a [ngClass]="{selected: filtroActivado==='todas'}" (click)="establecerFiltro('todas')">Todas</a>
     </li>
     <li>
-      <a (click)="establecerFiltro('pendientes')">Activas</a>
+      <a [ngClass]="{selected: filtroActivado==='pendientes'}" (click)="establecerFiltro('pendientes')">Activas</a>
     </li>
     <li>
-      <a (click)="establecerFiltro('completadas')">Completadas</a>
+      <a [ngClass]="{selected: filtroActivado==='completadas'}" (click)="establecerFiltro('completadas')">Completadas</a>
     </li>
   </ul>
   <button class="clear-completed">Limpiar Completadas</button>
