@@ -8,33 +8,33 @@ import { filtrosValidos } from 'src/app/filtro/filtro.actions';
 @Component({
   selector: 'todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css']
+  styleUrls: ['./todo-list.component.css'],
 })
-export class TodoListComponent implements OnInit{
-
+export class TodoListComponent implements OnInit {
   listaTareas!: Todo[];
   completadas!: boolean;
 
   filtro!: filtrosValidos;
 
-  constructor(private store: Store<AppState>){}
+  constructor(private store: Store<AppState>) {}
 
-  ngOnInit () : void {
+  ngOnInit(): void {
     this.store.subscribe({
-      next: state => {
+      next: (state) => {
         this.listaTareas = state.tareas;
         this.filtro = state.filtro as filtrosValidos;
       },
-      error: err => console.log(err),
+      error: (err) => console.log(err),
       complete: () => console.log('Completado'),
     });
 
     this.completadas = false;
   }
 
-  completarTodasTareas () {
+  completarTodasTareas() {
     this.completadas = !this.completadas;
-    this.store.dispatch ( marcarDesmarcarTodasTareas({completado: this.completadas}) );
+    this.store.dispatch(
+      marcarDesmarcarTodasTareas({ completado: this.completadas })
+    );
   }
-
 }
