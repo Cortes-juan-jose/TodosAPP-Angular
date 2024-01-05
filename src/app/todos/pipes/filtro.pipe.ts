@@ -8,8 +8,6 @@ import { filtrosValidos } from 'src/app/filtro/filtro.constantes';
 export class FiltroPipe implements PipeTransform {
   transform(tareas: Todo[], filtro: string): Todo[] {
     switch (filtro) {
-      case filtrosValidos.TODAS:
-        return tareas;
       case filtrosValidos.PENDIENTES:
         return tareas.filter((tarea) => !tarea.completado);
       case filtrosValidos.COMPLETADAS:
