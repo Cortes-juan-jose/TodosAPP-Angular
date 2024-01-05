@@ -1,16 +1,9 @@
 <footer class="footer">
   <span class="todo-count"><strong>{{tareasPendientes}}</strong> Tareas pendientes</span>
   <ul class="filters">
-    <li>
-      <!-- class="selected" -->
-      <a [ngClass]="{selected: filtroActivado==='todas'}" (click)="establecerFiltro('todas')">Todas</a>
-    </li>
-    <li>
-      <a [ngClass]="{selected: filtroActivado==='pendientes'}" (click)="establecerFiltro('pendientes')">Activas</a>
-    </li>
-    <li>
-      <a [ngClass]="{selected: filtroActivado==='completadas'}" (click)="establecerFiltro('completadas')">Completadas</a>
+    <li *ngFor="let filtro of filtros">
+      <a [ngClass]="{selected: filtroActivado===filtro}" (click)="establecerFiltro(filtro)">{{filtro | titlecase}}</a>
     </li>
   </ul>
-  <button class="clear-completed">Limpiar Completadas</button>
+  <button class="clear-completed">Limpiar Completas</button>
 </footer>
