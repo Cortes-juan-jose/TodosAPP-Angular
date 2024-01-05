@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import { establecerFiltro, filtrosValidos } from 'src/app/filtro/filtro.actions';
 
 @Component({
   selector: 'todo-footer',
@@ -10,10 +12,16 @@ export class TodoFooterComponent implements OnInit{
 
   tareasPendientes!: number;
 
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.tareasPendientes = 10;
+    this.tareasPendientes;
+  }
+
+  establecerFiltro(filtro: filtrosValidos){
+
+    this.store.dispatch(establecerFiltro({filtro}));
+
   }
 
 }
