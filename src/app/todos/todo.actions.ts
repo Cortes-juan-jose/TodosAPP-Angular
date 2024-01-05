@@ -35,3 +35,7 @@ export const eliminarTarea = createAction(
     id: number;
   }>()
 );
+
+export const eliminarTareasCompletadas = createAction(
+  '[TODO] Eliminar Tarea'
+);

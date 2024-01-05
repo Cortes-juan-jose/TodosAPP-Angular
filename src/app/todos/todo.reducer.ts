@@ -54,5 +54,9 @@ export const tareasReducer = createReducer(
         completado,
       };
     });
+  }),
+
+  on(actions.eliminarTareasCompletadas, (state) => {
+    return state.filter((tarea) => !tarea.completado);
   })
 );
