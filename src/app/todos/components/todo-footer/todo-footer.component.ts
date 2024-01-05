@@ -6,10 +6,9 @@ import * as actions from 'src/app/filtro/filtro.actions';
 @Component({
   selector: 'todo-footer',
   templateUrl: './todo-footer.component.html',
-  styleUrls: ['./todo-footer.component.css']
+  styleUrls: ['./todo-footer.component.css'],
 })
-export class TodoFooterComponent implements OnInit{
-
+export class TodoFooterComponent implements OnInit {
   filtroActivado!: string;
   filtros!: actions.filtrosValidos[];
 
@@ -18,24 +17,22 @@ export class TodoFooterComponent implements OnInit{
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-
     this.filtros = ['todas', 'pendientes', 'completadas'];
 
     this.store.subscribe({
-      next: state => {
+      next: (state) => {
         this.filtroActivado = state.filtro;
-        this.tareasPendientes = state.tareas.filter(tarea => tarea.completado!==true).length;
+        this.tareasPendientes = state.tareas.filter(
+          (tarea) => !tarea.completado
+        ).length;
       },
-      error: err => console.log(err),
+      error: (err) => console.log(err),
       complete: () => console.log('Completado'),
-    })
+    });
     this.tareasPendientes;
   }
 
-  establecerFiltro(filtro: actions.filtrosValidos){
-
-    this.store.dispatch(actions.establecerFiltro({filtro}));
-
+  establecerFiltro(filtro: actions.filtrosValidos) {
+    this.store.dispatch(actions.establecerFiltro({ filtro }));
   }
-
 }
